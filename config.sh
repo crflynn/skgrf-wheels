@@ -75,3 +75,21 @@ if [ -n "$IS_OSX" ]; then
         $PIP_CMD install $(pip_opts) $@ $supported_wheels
     }
 fi
+
+if [ -n "$IS_OSX" ]; then
+    function publish_wheel {
+        if [ -n "$GITHUB_REF" ] && [ "$GITHUB_REPOSITORY" == "crflynn/skgrf-wheels" ]; then
+            cd skgrf
+            source $HOME/.poetry/env
+            poetry run pip install --upgrade twine
+            poetry run twine upload wheelhouse/*.whl
+        fi
+    }
+else
+    function publish_wheel {
+        if [ -n "$GITHUB_REF" ] && [ "$GITHUB_REPOSITORY" == "crflynn/skgrf-wheels" ]; then
+            pip install --upgrade twine
+            twine upload wheelhouse/*.whl
+        fi
+    }
+fi

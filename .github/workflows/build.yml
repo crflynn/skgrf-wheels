@@ -103,8 +103,5 @@ jobs:
         env:
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
         run: |
-          if [ -n "$GITHUB_REF" ] && [ "$GITHUB_REPOSITORY" == "crflynn/skgrf-wheels" ]; then
-            source $HOME/.poetry/env
-            poetry run pip install --upgrade twine
-            poetry run twine upload wheelhouse/*.whl
-          fi
+          source config.sh
+          publish_wheel
