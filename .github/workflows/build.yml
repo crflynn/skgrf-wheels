@@ -103,5 +103,6 @@ jobs:
         env:
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
         run: |
+          source multibuild/common_utils.sh
           source config.sh
           publish_wheel
