@@ -79,16 +79,17 @@ fi
 
 function publish_wheel {
     if [ -n "$GITHUB_REF" ] && [ "$GITHUB_REPOSITORY" == "crflynn/skgrf-wheels" ]; then
+        local wheelhouse=$(abspath ${WHEEL_SDIR:-wheelhouse})
         echo IS_OSX
         echo $IS_OSX
         if [ -n "$IS_OSX" ]; then
             cd skgrf
             source $HOME/.poetry/env
             poetry run pip install --upgrade twine
-            poetry run twine upload wheelhouse/*.whl
+            poetry run twine upload $wheelhouse/*.whl
         else
             pip install --upgrade twine
-            twine upload wheelhouse/*.whl
+            twine upload $wheelhouse/*.whl
         fi
     fi
 }
