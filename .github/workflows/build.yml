@@ -100,9 +100,10 @@ jobs:
           install_run $PLAT
       - name: after_success
         if: github.event_name == 'release' && github.event.action == 'created'
+        env:
+          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
         run: |
           if [ -n "$GITHUB_REF" ] && [ "$GITHUB_REPOSITORY" == "crflynn/skgrf-wheels" ]; then
             pip install --upgrade twine
             twine upload wheelhouse/*.whl
           fi
-
