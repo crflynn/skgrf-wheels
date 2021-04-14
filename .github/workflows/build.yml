@@ -1,3 +1,5 @@
+name: build
+
 env:
   REPO_DIR: "skgrf"
   BUILD_COMMIT: "0.0.1"
