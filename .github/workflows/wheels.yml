@@ -2,7 +2,7 @@ name: wheels
 
 env:
   REPO_DIR: "skgrf"
-  BUILD_COMMIT: "0.1.0"
+  BUILD_COMMIT: "0f542d611aa06d294e5f71c4150dec48930badf4"
   BUILD_DEPENDS: "cython numpy==1.20.2"
   UNICODE_WIDTH: 32
   TWINE_USERNAME: "crflynn"
