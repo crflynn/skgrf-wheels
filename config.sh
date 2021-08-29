@@ -10,6 +10,7 @@ function pre_build {
 
 function run_tests {
     python -c "import skgrf; print(skgrf.__version__)"
+    python -c "from skgrf import grf"
 }
 
 function build_wheel {
