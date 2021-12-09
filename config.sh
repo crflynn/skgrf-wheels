@@ -86,6 +86,7 @@ function publish_wheel {
         if [ -n "$IS_OSX" ]; then
             cd skgrf
             source $HOME/.poetry/env
+            poetry config virtualenvs.create false
             poetry run pip install --upgrade twine
             poetry run twine upload $wheelhouse/*.whl
         else
